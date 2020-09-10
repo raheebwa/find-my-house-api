@@ -2,6 +2,7 @@
 require 'spec_helper'
 # require database cleaner at the top level
 require 'database_cleaner'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production

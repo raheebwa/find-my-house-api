@@ -1,6 +1,13 @@
 require "rails_helper"
 
 RSpec.describe UsersController, type: :routing do
+  let!(:user) { create(:user) }
+
+  before do
+    header 'Authorization', token_generator(user.id)
+    header 'Content-Type', 'application/json'
+  end
+  
   describe "routing" do
     it "routes to #index" do
       expect(get: "/users").to route_to("users#index")
