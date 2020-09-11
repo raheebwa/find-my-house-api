@@ -1,5 +1,5 @@
 class FavouriteController < ApplicationController
- def index
+  def index
     @favourite = Favourite.where('user_id = ?', params[:user_id])
     json_response(@favourite)
   end

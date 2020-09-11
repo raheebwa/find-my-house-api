@@ -1,11 +1,9 @@
 require 'rails_helper'
 
-
 RSpec.describe "/houses", type: :request do
   let(:valid_attributes) {
-  :name, :description, :image_url, :price
   }
-    
+
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
   }

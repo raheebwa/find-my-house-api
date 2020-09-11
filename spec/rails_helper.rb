@@ -83,7 +83,6 @@ RSpec.configure do |config|
       example.run
     end
   end
-
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

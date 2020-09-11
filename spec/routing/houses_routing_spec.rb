@@ -10,7 +10,6 @@ RSpec.describe HousesController, type: :routing do
       expect(get: "/houses/1").to route_to("houses#show", id: "1")
     end
 
-
     it "routes to #create" do
       expect(post: "/houses").to route_to("houses#create")
     end

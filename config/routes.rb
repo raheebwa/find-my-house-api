@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :users do
-    resources :favourites, only: [:create, :destroy, :index] 
+    resources :favourites, only: [:create, :destroy, :index]
   end
   resources :houses
 

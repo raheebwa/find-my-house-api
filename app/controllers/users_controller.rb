@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-    before_action :authorized, only: [:profile]
-    before_action :set_user, only: [:show, :update, :destroy]
-  
+  before_action :authorized, only: [:profile]
+  before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -15,12 +14,11 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-
   # REGISTER
   def create
     @user = User.create(user_params)
     if @user.valid?
-      token = encode_token({user_id: @user.id})
+      token = encode_token({ user_id: @user.id})
       render json: {user: @user, token: token}
     else
       render json: {error: "User can not be created."}
@@ -38,7 +36,6 @@ class UsersController < ApplicationController
       render json: {error: "Invalid username or password"}
     end
   end
-
 
   def profile
     render json: @user
@@ -59,12 +56,14 @@ class UsersController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   # Only allow a trusted parameter "white list" through.
-    def user_params
-      params.require(:user).permit(:username, :password)
-    end
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
 end

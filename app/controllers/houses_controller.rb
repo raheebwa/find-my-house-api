@@ -39,13 +39,14 @@ class HousesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_house
-      @house = House.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def house_params
-      params.require(:house).permit(:name, :description, :image_url, :price)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_house
+    @house = House.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def house_params
+    params.require(:house).permit(:name, :description, :image_url, :price)
+  end
 end
