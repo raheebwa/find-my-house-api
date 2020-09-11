@@ -1,22 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe "/houses", type: :request do
-  let(:valid_attributes) {
-  }
+  let(:house) { build(:house) }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:valid_attributes) do
+    {
+      name: house.name,
+      description: house.description,
+      image_url: house.image_url,
+      price: house.price
+    }
+  end
 
-  let(:valid_headers) {
-    {}
-  }
+  let(:invalid_attributes) do 
+      {
+        age: 560,
+        trey: "idiot"
+      }
+  end
+
+  let(:valid_headers)do 
+    {
+      # valid_headers 
+    }
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
       House.create! valid_attributes
       get houses_url, headers: valid_headers, as: :json
-      expect(response).to be_successful
+      expect(response).to have_http_status(:ok)
     end
   end
 
