@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  # before_action :authorized, except: [:profile]
+  before_action :authorized, except: [:create]
   before_action :set_user, only: %i[show update destroy]
 
   # GET /users
@@ -23,24 +23,8 @@ class UsersController < ApplicationController
       token = encode_token({ user_id: @user.id })
       render json: { user: @user, token: token }
     else
-      render json: { error: 'User can not be created.' }
+      render json: { error: @user.errors }
     end
-  end
-
-  # LOGGING IN
-  def login
-    @user = User.find_by(username: params[:username])
-
-    if @user&.authenticate(params[:password])
-      token = encode_token({ user_id: @user.id })
-      render json: { user: [@user.id, @user.username], token: token }
-    else
-      render json: { error: 'Invalid username or password' }
-    end
-  end
-
-  def profile
-    render json: @user
   end
 
   # PATCH/PUT /users/1
@@ -66,6 +50,6 @@ class UsersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.permit(:username, :password)
   end
 end

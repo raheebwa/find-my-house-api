@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   end
   resources :houses
 
-  post '/login', to: 'users#login'
-  get '/profile', to: 'users#profile'
+  post '/login', to:  'auth#login'
+  get '/profile', to: 'auth#profile'
 
   # documentation
   mount Raddocs::App => '/docs'
