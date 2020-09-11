@@ -13,16 +13,16 @@ RSpec.describe "/houses", type: :request do
     }
   end
 
-  let(:invalid_attributes) do 
-      {
-        age: 560,
-        trey: "idiot"
-      }
+  let(:invalid_attributes) do
+    {
+      age: 560,
+      trey: "idiot"
+    }
   end
 
-  let(:valid_headers)do 
+  let(:valid_headers) do
     {
-      # valid_headers 
+      # valid_headers
     }
   end
 
