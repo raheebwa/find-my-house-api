@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :house do
     name { Faker::Lorem.words(number: 4) }

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'acceptance_helper'
 
-RSpec.describe "/houses", type: :request do
+RSpec.describe '/houses', type: :request do
   let(:house) { build(:house) }
 
   let(:valid_attributes) do
@@ -16,7 +18,7 @@ RSpec.describe "/houses", type: :request do
   let(:invalid_attributes) do
     {
       age: 560,
-      trey: "idiot"
+      trey: 'idiot'
     }
   end
 
@@ -26,96 +28,96 @@ RSpec.describe "/houses", type: :request do
     }
   end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       House.create! valid_attributes
       get houses_url, headers: valid_headers, as: :json
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       house = House.create! valid_attributes
       get house_url(house), as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new House" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new House' do
+        expect do
           post houses_url,
                params: { house: valid_attributes }, headers: valid_headers, as: :json
-        }.to change(House, :count).by(1)
+        end.to change(House, :count).by(1)
       end
 
-      it "renders a JSON response with the new house" do
+      it 'renders a JSON response with the new house' do
         post houses_url,
              params: { house: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new House" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new House' do
+        expect do
           post houses_url,
                params: { house: invalid_attributes }, as: :json
-        }.to change(House, :count).by(0)
+        end.to change(House, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new house" do
+      it 'renders a JSON response with errors for the new house' do
         post houses_url,
              params: { house: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq("application/json")
+        expect(response.content_type).to eq('application/json')
       end
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
+      end
 
-      it "updates the requested house" do
+      it 'updates the requested house' do
         house = House.create! valid_attributes
         patch house_url(house),
               params: { house: invalid_attributes }, headers: valid_headers, as: :json
         house.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "renders a JSON response with the house" do
+      it 'renders a JSON response with the house' do
         house = House.create! valid_attributes
         patch house_url(house),
               params: { house: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
-        expect(response.content_type).to eq("application/json")
+        expect(response.content_type).to eq('application/json')
       end
     end
 
-    context "with invalid parameters" do
-      it "renders a JSON response with errors for the house" do
+    context 'with invalid parameters' do
+      it 'renders a JSON response with errors for the house' do
         house = House.create! valid_attributes
         patch house_url(house),
               params: { house: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq("application/json")
+        expect(response.content_type).to eq('application/json')
       end
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested house" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested house' do
       house = House.create! valid_attributes
-      expect {
+      expect do
         delete house_url(house), headers: valid_headers, as: :json
-      }.to change(House, :count).by(-1)
+      end.to change(House, :count).by(-1)
     end
   end
 end

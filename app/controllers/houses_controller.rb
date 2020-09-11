@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :update, :destroy]
+  before_action :set_house, only: %i[show update destroy]
 
   # GET /houses
   def index

@@ -1,1 +1,3 @@
-user = User.create(username: 'raheebwa', password: "password")
+# frozen_string_literal: true
+
+user = User.create(username: 'raheebwa', password: 'password')

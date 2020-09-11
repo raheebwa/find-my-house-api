@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   # before_action :authorized, except: [:profile]
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: %i[show update destroy]
 
   # GET /users
   def index
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
       token = encode_token({ user_id: @user.id })
       render json: { user: @user, token: token }
     else
-      render json: { error: "User can not be created." }
+      render json: { error: 'User can not be created.' }
     end
   end
 
@@ -29,11 +31,11 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(username: params[:username])
 
-    if @user && @user.authenticate(params[:password])
-      token = encode_token({user_id: @user.id})
-      render json: {user: [@user.id, @user.username], token: token}
+    if @user&.authenticate(params[:password])
+      token = encode_token({ user_id: @user.id })
+      render json: { user: [@user.id, @user.username], token: token }
     else
-      render json: {error: "Invalid username or password"}
+      render json: { error: 'Invalid username or password'}
     end
   end
 
