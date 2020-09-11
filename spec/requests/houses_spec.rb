@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'acceptance_helper'
 
 RSpec.describe "/houses", type: :request do
   let(:house) { build(:house) }

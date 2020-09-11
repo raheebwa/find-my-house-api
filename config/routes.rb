@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   post "/login", to: "users#login"
   get "/profile", to: "users#profile"
+
+  # documentation
+  mount Raddocs::App => "/docs"
 end

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'acceptance_helper'
 
 RSpec.describe User, type: :model do
   it { should have_many(:favourites).dependent(:destroy) }

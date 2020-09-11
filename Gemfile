@@ -49,5 +49,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jwt'
-
 gem 'rubocop'
+
+# Documentation
+gem 'raddocs'
+gem "rspec_api_documentation", "~> 6.1"

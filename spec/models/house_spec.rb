@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'acceptance_helper'
 
 RSpec.describe House, type: :model do
   it { should have_many(:favourites).dependent(:destroy) }
