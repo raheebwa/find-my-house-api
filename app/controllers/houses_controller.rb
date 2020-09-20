@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HousesController < ApplicationController
-  before_action :authorized
+  # before_action :authorized
   before_action :set_house, only: %i[show update destroy]
 
   # GET /houses
@@ -21,7 +21,7 @@ class HousesController < ApplicationController
     @house = House.new(house_params)
 
     if @house.save
-      render json: @house, status: :created, location: @house
+      render json: @house, status: :created
     else
       render json: @house.errors, status: :unprocessable_entity
     end

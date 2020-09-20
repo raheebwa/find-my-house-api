@@ -56,3 +56,5 @@ gem 'rubocop'
 # Documentation
 gem 'raddocs'
 gem 'rspec_api_documentation', '~> 6.1'
+
+gem "hirb", "~> 0.7.3"

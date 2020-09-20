@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe HousesController, type: :routing do
   describe 'routing' do
+    let(:house) { build(:house) }
     it 'routes to #index' do
       expect(get: '/houses').to route_to('houses#index')
     end

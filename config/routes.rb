@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resource :users do
+  resources :users do
     resources :favourites, only: %i[create destroy index]
   end
   resources :houses
