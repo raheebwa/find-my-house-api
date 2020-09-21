@@ -66,6 +66,13 @@ RSpec.describe '/users', type: :request do
         {username: 'wawa'}
       end
 
+      it 'updates the requested user' do
+        user = User.create! valid_attributes
+        patch user_url(user),
+              params: { user: invalid_attributes }, headers: valid_headers, as: :json
+        user.reload
+      end
+
       it 'renders a JSON response with the user' do
         user = User.create! valid_attributes
         patch user_url(user),
@@ -73,6 +80,7 @@ RSpec.describe '/users', type: :request do
         expect(response).to have_http_status(:ok)
       end
     end
+  end
 
   describe 'DELETE /destroy' do
     it 'destroys the requested user' do
