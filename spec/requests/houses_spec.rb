@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 require 'acceptance_helper'
+require 'rspec_api_documentation/dsl'
 
 def encode_token(payload)
     JWT.encode(payload, 's3cr3t')

@@ -6,7 +6,8 @@ RSpec.describe '/users', type: :request do
   let(:user) { build(:user) }
   let(:valid_attributes) do
    { username: user.username,
-    password: user.password}
+    password: user.password,
+    password_confirmation: user.password}
   end
 
   let(:invalid_attributes) do
@@ -46,7 +47,7 @@ RSpec.describe '/users', type: :request do
         expect do
           post users_url,
                params: { user: valid_attributes }, headers: valid_headers, as: :json
-        end.to change(User, :count).by(0)
+        end.to change(User, :count).by(1)
       end
     end
 
