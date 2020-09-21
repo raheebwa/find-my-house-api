@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FavouriteController < ApplicationController
+class FavouritesController < ApplicationController
   def index
     @favourite = Favourite.where('user_id = ?', params[:user_id])
     json_response(@favourite)
