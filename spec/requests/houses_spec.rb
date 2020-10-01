@@ -8,6 +8,83 @@ def encode_token(payload)
     JWT.encode(payload, 's3cr3t')
 end
 
+resource 'Houses' do
+  explanation "Houses Resource"
+
+  before do
+    # header "Content-Type", "application/json"
+    header "Authorization", encode_token({ user_id: user.id })
+  end
+
+  get '/houses' do
+    parameter :name, "Name of House"
+    parameter :description, "Description of house"
+    parameter :image_url, "Image URL of house"
+    parameter :price, "Price of House"
+
+    let(:house) { build(:house) }
+    let(:user) { build(:user) }
+    
+    context '200' do
+        example_request 'Getting a list of orders' do
+          expect(status).to eq(200)
+        end
+      end
+  end
+
+  put '/orders/:id' do
+
+      with_options scope: :data, with_example: true do
+        parameter :name, 'The order name', required: true
+        parameter :description
+        parameter :image_url, 'The order description'
+      end
+
+      context "200" do
+        let(:id) { 1 }
+
+        example 'Update a house' do
+          request = {
+            data: {
+              name: 'House 1',
+              price: 1,
+              description: 'my cute house'
+            }
+          }
+          
+          # It's also possible to extract types of parameters when you pass data through `do_request` method.
+          do_request(request)
+          
+          expected_response = {
+            data: {
+              name: 'order',
+              amount: 1,
+              description: 'fast order'
+            }
+          }
+          expect(status).to eq(200)
+          expect(response_body).to eq(expected_response)
+        end
+      end
+
+      context "400" do
+        let(:id) { "a" }
+
+        example_request 'Invalid request' do
+          expect(status).to eq(400)
+        end
+      end
+      
+      context "404" do
+        let(:id) { 0 }
+        
+        example_request 'Order is not found' do
+          expect(status).to eq(404)
+        end
+      end
+    end
+end
+
 RSpec.describe '/houses', type: :request do
   let(:house) { build(:house) }
   let(:user) { build(:user) }

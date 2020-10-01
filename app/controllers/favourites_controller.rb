@@ -3,12 +3,12 @@
 class FavouritesController < ApplicationController
   def index
     @favourite = Favourite.where('user_id = ?', params[:user_id])
-    json_response(@favourite)
+    render json: @favourite
   end
 
   def create
     @favourite = current_user.favourites.create!(favourite_params)
-    json_response(@favourite, :created)
+    render json: @favourite
   end
 
   def destroy
