@@ -1,0 +1,36 @@
+{
+  "resource": "Service",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/houses",
+  "description": "Listing houses",
+  "explanation": "List all the houses",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/houses",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[\n  {\n    \"id\": 4,\n    \"name\": \"[\\\"perferendis\\\", \\\"veritatis\\\", \\\"quis\\\", \\\"rerum\\\"]\",\n    \"description\": \"Numquam delectus aliquid. Iusto dolorem sunt. Commodi quaerat aut. Odio commodi eos. Libero officiis et. Similique ut reprehenderit. Alias velit libero. Nam sit quia. Eos non id. Voluptatum dignissimos earum.\",\n    \"image_url\": \"https://placehold.it/300x300.png\",\n    \"price\": \"25424.14\",\n    \"created_at\": \"2020-09-22T03:21:37.770Z\",\n    \"updated_at\": \"2020-09-22T03:21:37.770Z\"\n  }\n]",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://localhost:3000/houses\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

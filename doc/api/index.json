@@ -1,0 +1,30 @@
+{
+  "resources": [
+    {
+      "name": "Authentication",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Generating an auth token",
+          "link": "authentication/generating_an_auth_token.json",
+          "groups": "all",
+          "route": "/login",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Houses",
+      "explanation": "Houses Resource",
+      "examples": [
+        {
+          "description": "Getting a list of orders",
+          "link": "houses/getting_a_list_of_orders.json",
+          "groups": "all",
+          "route": "/houses",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}
